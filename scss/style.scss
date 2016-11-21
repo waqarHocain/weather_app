@@ -1,0 +1,138 @@
+/**
+ * Author: Waqar Hocain <waqarmaxtan@gmail.com>
+ * Project: Weather App
+ * Description: A simple weather app, which displays the current weather. It fetch your location from your IP Address. So, if you're using a proxy, you may get inaccurate results.
+ * I've used the following services:
+ * -- http://openweathermap.org   // for getting weather information
+ * -- http://ip-api.com           // to get location of an IP Address
+ * 
+ * Libraries:
+ * -- jQuery                      // for easy DOM manipulation
+ * -- normalize                   // get rid of default browser styles
+ * -- unGrid                      // extremely small css layout grid
+ *
+ * -- Fonts:                      
+ * -- OpenSans
+ */
+
+// colors
+$c-light: #F9F9F9;
+$c-gray:  #9e9ea6;
+$c-blue:  #439fe0;
+$c-dark:  #1f1f1f;
+
+// breakpoint
+$l-tablet: 768px;
+$l-mobile: 481px;
+
+* 
+{
+  box-sizing: border-box;
+}
+%group 
+{
+  display: table;
+  clear: both;
+}
+.container 
+{
+  max-width: 960px;
+  margin: 0 auto;
+}
+// UnGrid
+@media (min-width: $l-tablet) 
+{
+    .row { width: 100%; display: table; table-layout: fixed; }
+    .col { display: table-cell; }
+}
+
+body
+{
+  position: relative;
+  font: 22px "Open Sans", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+a 
+{
+  color: $c-blue;
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover,
+  &:focus
+  {
+    color: darken($c-blue, 10);
+  }
+}
+header
+{
+  height: 10vh;
+  background: #fff;
+  color: #3d3d3d;
+  text-align: center;
+}
+
+main 
+{
+  background-color: $c-light;
+  color: $c-gray;
+  font-size: 22px;
+  text-align: center;
+  height: 85vh;
+  min-height: 400px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loc, 
+.cond, 
+.temp 
+{
+  padding: 20px;
+}
+
+.loc,
+.cond
+{
+  border: 2px solid $c-gray;
+
+  @media screen and (max-width: $l-tablet)
+  {
+    border: none;
+  }
+}
+
+
+.temp
+{
+  border: 3px solid $c-blue;
+  border-radius: 10px;
+}
+
+.loc 
+{
+  background: url(https://cdn4.iconfinder.com/data/icons/miu/22/map_location_pin_map-marker-32.png) 10px center no-repeat;
+  border-radius: 10px 0 0 10px;
+  border-right: 0;
+
+  @media screen and (max-width: $l-tablet)
+  {
+    background-position: 0 center;
+    padding-left: 30px;
+  }
+}
+
+.cond 
+{
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  border-radius: 0 10px 10px 0;
+  border-left: 0;
+}
+
+.convert 
+{
+  font-size: 16px;
+}
