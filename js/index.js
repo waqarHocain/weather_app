@@ -3,8 +3,8 @@
  * Project: Weather App
  * Description: A simple weather app, which displays the current weather. It fetch your location from your IP Address. So, if you're using a proxy, you may get inaccurate results.
  * I've used the following services:
- * -- http://openweathermap.org   // for getting weather information
- * -- http://ip-api.com           // to get location of an IP Address
+ * -- http://openweathermap.org                     // for getting weather information
+ * -- http://api.ipinfodb.com/v3/ip-city/           // to get location of an IP Address
  * 
  * Libraries:
  * -- jQuery                      // for easy DOM manipulation
@@ -16,12 +16,14 @@
  */
 
 $(document).ready(function () {
-  $.get("http://ip-api.com/json", function(response) {
-  var city = response.city,
-      country = response.country;
+  var API_KEY = "fc1507c0223c89eb316ae43f2c7952b18feb9a869fee8a71df96e32fced7ce27";
+  
+  $.get("http://api.ipinfodb.com/v3/ip-city/?format=json&key=" + API_KEY, function(response) {
+  var city = response.cityName,
+      country = response.countryName;
 
-  var lat = response.lat,
-      lon = response.lon;
+  var lat = response.latitude,
+      lon = response.longitude;
    
   $(".loc").append(city + ", " + country);
   
